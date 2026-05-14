@@ -8,6 +8,10 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
+import { Toaster } from "@/components/ui/sonner";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -72,19 +76,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Dienstleister Ejupi — Garten- & Landschaftsbau in Kirchheim" },
+      {
+        name: "description",
+        content:
+          "Garten- und Landschaftsbau aus Kirchheim unter Teck. Pflasterarbeiten, Gartenpflege, Baumfällung, Winterdienst und Hausmeisterservice — Service rund ums Häusle.",
+      },
+      { name: "author", content: "Dienstleister Ejupi" },
+      { property: "og:site_name", content: "Dienstleister Ejupi" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:title", content: "Dienstleister Ejupi — Garten- & Landschaftsbau" },
+      {
+        property: "og:description",
+        content: "Service rund ums Häusle — Garten- und Landschaftsbau in Kirchheim unter Teck.",
+      },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap",
       },
     ],
   }),
@@ -113,7 +127,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <div className="flex min-h-screen flex-col">
+        <SiteHeader />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <SiteFooter />
+      </div>
+      <Toaster richColors position="top-center" />
     </QueryClientProvider>
   );
 }
