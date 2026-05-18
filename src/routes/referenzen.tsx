@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin } from "lucide-react";
-import { REFERENCES } from "@/lib/site-data";
+import { MapPin, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import { REFERENCES, MYHAMMER_URL } from "@/lib/site-data";
+import { ReviewCarousel } from "@/components/ReviewCarousel";
 
 export const Route = createFileRoute("/referenzen")({
   head: () => ({
@@ -22,45 +24,98 @@ export const Route = createFileRoute("/referenzen")({
 
 function ReferenzenPage() {
   return (
-    <>
-      <section className="px-6 pt-20 pb-12 max-w-7xl mx-auto">
-        <p className="text-xs font-semibold uppercase tracking-widest text-primary">Referenzen</p>
-        <h1 className="mt-4 font-display text-5xl lg:text-6xl text-balance max-w-3xl">
-          Projekte, die für sich sprechen.
-        </h1>
-        <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-          Ein kleiner Auszug aus unseren Arbeiten in und um Kirchheim unter Teck.
-        </p>
+    <div className="overflow-hidden">
+      <section className="px-6 pt-32 pb-20 max-w-7xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel text-primary text-xs font-bold uppercase tracking-widest mb-6">
+            <span className="w-2 h-2 rounded-full bg-primary" />
+            Referenzen
+          </div>
+          <h1 className="mt-4 font-display text-5xl lg:text-7xl text-balance max-w-4xl text-white drop-shadow-xl">
+            Projekte, die für sich <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-teal-400 italic">sprechen.</span>
+          </h1>
+          <p className="mt-8 text-xl text-foreground/80 max-w-2xl leading-relaxed">
+            Ein kleiner Auszug aus unseren Arbeiten in und um Kirchheim unter Teck.
+          </p>
+        </motion.div>
       </section>
 
-      <section className="px-6 pb-24 max-w-7xl mx-auto">
+      <section className="px-6 pb-32 max-w-7xl mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-8">
           {REFERENCES.map((r, i) => (
-            <article
+            <motion.article
               key={r.title}
-              className={`group ${i % 3 === 0 ? "md:col-span-2" : ""}`}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className={`group glass-panel rounded-[2.5rem] p-3 flex flex-col hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 ${
+                i % 3 === 0 ? "md:col-span-2" : ""
+              }`}
             >
-              <div className={`overflow-hidden bg-muted ${i % 3 === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
+              <div className={`overflow-hidden rounded-[2rem] relative ${i % 3 === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
+                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay" />
                 <img
                   src={r.image}
                   alt={r.title}
                   loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out relative z-0"
                 />
               </div>
-              <div className="mt-5 flex flex-wrap items-baseline justify-between gap-2">
+              <div className="mt-6 px-6 pb-6 flex flex-wrap items-baseline justify-between gap-4">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">{r.type}</p>
-                  <h2 className="font-display text-2xl mt-1">{r.title}</h2>
+                  <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2 drop-shadow-sm">{r.type}</p>
+                  <h2 className="font-display text-3xl text-white group-hover:text-primary transition-colors">{r.title}</h2>
                 </div>
-                <p className="text-sm text-muted-foreground inline-flex items-center gap-1">
-                  <MapPin className="size-3.5" /> {r.location}
+                <p className="text-sm text-foreground/70 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                  <MapPin className="size-4 text-primary" /> {r.location}
                 </p>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </section>
-    </>
+
+      {/* Bewertungen Section */}
+      <section className="px-6 pb-32 max-w-7xl mx-auto relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none -z-10 rounded-[3rem]" />
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="flex flex-wrap items-end justify-between gap-6 mb-16"
+        >
+          <div>
+            <p className="text-sm font-bold uppercase tracking-widest text-primary drop-shadow-[0_0_10px_rgba(16,185,129,0.4)]">
+              Bewertungen
+            </p>
+            <h2 className="mt-4 font-display text-4xl lg:text-6xl text-white">Das sagen unsere Kunden</h2>
+          </div>
+          <a 
+            href={MYHAMMER_URL}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="font-semibold text-white inline-flex items-center gap-2 hover:gap-3 transition-all bg-primary hover:bg-primary/90 px-8 py-4 rounded-2xl shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]"
+          >
+            Alle Bewertungen auf MyHammer
+            <ExternalLink className="size-4" />
+          </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <ReviewCarousel />
+        </motion.div>
+      </section>
+    </div>
   );
 }
+

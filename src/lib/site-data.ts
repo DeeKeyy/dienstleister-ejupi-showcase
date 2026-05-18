@@ -116,3 +116,74 @@ export const CONTACT = {
     city: "73230 Kirchheim unter Teck",
   },
 };
+
+export const MYHAMMER_URL = "https://www.my-hammer.de/auftragnehmer/dienstleister-ejupi"; // Bitte bei Bedarf durch den echten Link ersetzen!
+
+export const REVIEWS = [
+  {
+    author: "Kunde aus Deggingen",
+    date: "9. April 2026",
+    rating: 5,
+    service: "Pflegen von Gärten: 100 m²; Rasen mähen, Zaunanbringen",
+    text: "Super Service von Anfang bis Ende sehr freundlich und zuverlässig …kann ich nur weiter empfehlen…",
+    source: "MyHammer"
+  },
+  {
+    author: "Kunde aus Esslingen",
+    date: "13. Oktober 2025",
+    rating: 5,
+    service: "Spezialmontage",
+    text: "Ein 3 Meter langes Logo wurde an unserer Außenfassade in 8 Metern Höhe angebracht – sehr sauber, präzise und schnell gearbeitet. Hervorragendes Preis-Leistungs-Verhältnis!",
+    source: "MyHammer"
+  },
+  {
+    author: "Maximo, Weinstadt",
+    date: "5. Juli 2025",
+    rating: 5,
+    service: "Anlage und Gestaltung von Gärten: 60 m²; Garten anlegen, Garten umgraben",
+    text: "Herr Ejupi und sein Team sind sehr zuverlässig, schnell und arbeiten sehr sauber. Sie arbeiten zudem sehr präzise und Herr Ejupi hat immer wieder betont, dass er immer alles so macht, wie er es auch bei sich zuhause machen würde. Was das Team in der kurzen Zeit aus unserem Garten gemacht hat ist der Wahnsinn. Alle waren immer sehr nett und der Preis war fair. Ich kann jedem empfehlen sich an Herrn Ejupi zu wenden, denn da ist man definitiv an der richtigen Adresse. Nochmal vielen Dank für alles!",
+    source: "MyHammer"
+  },
+  {
+    author: "Sabine, Reutlingen",
+    date: "09. April 2025",
+    rating: 5,
+    service: "Anlage und Gestaltung von Gärten",
+    text: "Herr Ejupi hat ganz hervorragend gearbeitet. Er war pünktlich, zuverlässig, hilfsbereit und äußerst höflich. Meinen nächsten Auftrag werde ich mit Sicherheit an Herrn Ejupi vergeben.",
+    source: "MyHammer"
+  },
+  {
+    author: "Kunde aus Stuttgart",
+    date: "02. April 2025",
+    rating: 5,
+    service: "Anlegen und Ausbessern von Gartenwegen",
+    text: "Herr Ejupi war pünktlich und zuverlässig machte seine Arbeit sehr gut. Vielen Dank",
+    source: "MyHammer"
+  },
+  {
+    author: "Ralph, Holzmaden",
+    date: "29. März 2025",
+    rating: 5,
+    service: "Anlegen und Pflegen von Gartenteichen: 80 m Tiefe; Instandhaltung",
+    text: "Alles Top",
+    source: "MyHammer"
+  },
+  {
+    author: "Thomas, Nürtingen",
+    date: "20. November 2024",
+    rating: 5,
+    service: "Entrümpelung: 45 m²; kleines Ladengeschäft",
+    text: "Vielen Dank an Herrn Ejupi. War alles zur vollsten Zufriedenheit. Pünktlich, fleißig, faire Preisfindung. Kann ich nur empfehlen. Gerne wieder.",
+    source: "MyHammer"
+  },
+  {
+    author: "Kunde aus Wernau",
+    date: "18. November 2024",
+    rating: 5,
+    service: "Pflasterarbeiten: 20 m²; Pflastern; Garten oder Innenhof",
+    text: "Die Arbeit wurde zur vollsten Zufriedenheit erledigt. Gerne wieder.",
+    source: "MyHammer"
+  }
+
+];
+
